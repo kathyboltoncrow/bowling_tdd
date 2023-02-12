@@ -24,4 +24,12 @@ public class BowlingGameTest {
         assertEquals(expected, simpleSum);
     }
 
+    @ParameterizedTest
+    @CsvFileSource (files = "src/main/resources/data.csv")
+    public void calculateScore(String input, int expected ){
+        int[] rolls = bowlingGame.loadGame(input);
+        int score = bowlingGame.calculateScore();
+        assertEquals(expected, score);
+    }
+
 }

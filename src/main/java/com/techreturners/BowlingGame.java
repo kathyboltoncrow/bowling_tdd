@@ -27,5 +27,23 @@ public class BowlingGame {
         return rolls;
     }
 
+    public int calculateScore (){
+        //strike = 10 + 2 rolls, spare is 10 + 1 roll
+        int score = 0;
+        int rollsIndex = 0;
+        for(int frameIndex = 0; frameIndex < 10; frameIndex++){
+            if (rolls[rollsIndex] == 10) {
+                score += 10 + rolls[rollsIndex + 1] + rolls[rollsIndex + 2];
+                rollsIndex ++;
+            } else if ( rolls[rollsIndex] + rolls[rollsIndex + 1]  == 10){
+                score += 10 + rolls[rollsIndex + 1];
+                rollsIndex += 2;
+            } else {
+                score += rolls[rollsIndex] + rolls[rollsIndex + 1];
+                rollsIndex += 2;
+            }
+        }
 
+        return score;
     }
+}
